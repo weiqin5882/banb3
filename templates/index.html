@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>订单比对与利润核算系统</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>订单比对与利润核算系统</h1>
+
+    <section class="panel">
+      <div class="upload-grid">
+        <label>
+          官方订单表
+          <input type="file" id="officialFile" accept=".xlsx,.xls,.et" />
+        </label>
+        <label>
+          客服统计表
+          <input type="file" id="serviceFile" accept=".xlsx,.xls,.et" />
+        </label>
+      </div>
+      <button id="loadColumnsBtn">加载字段</button>
+    </section>
+
+    <section class="panel">
+      <h2>字段映射（可修改）</h2>
+      <div id="mappingArea" class="mapping-grid"></div>
+      <button id="compareBtn">开始比对</button>
+      <button id="downloadBtn" disabled>下载 Excel</button>
+    </section>
+
+    <section class="panel">
+      <div class="table-controls">
+        <label>每页 <select id="pageSize"><option>20</option><option>50</option><option>100</option></select></label>
+        <span id="pager"></span>
+      </div>
+      <table id="resultTable">
+        <thead>
+          <tr>
+            <th data-key="index">序号</th>
+            <th data-key="order_no">订单号</th>
+            <th data-key="product">商品名称</th>
+            <th data-key="sales">销售金额</th>
+            <th data-key="cost">成本</th>
+            <th data-key="profit">单笔利润</th>
+            <th data-key="status_mark">状态标记</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="summary" class="summary"></div>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
